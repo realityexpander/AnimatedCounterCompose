@@ -79,7 +79,7 @@ fun PreviewAnimatedCounter() {
     LaunchedEffect(key1 = true) {
         while(true) {
             count++
-            delay(5000)
+            delay(1000)
         }
     }
 
