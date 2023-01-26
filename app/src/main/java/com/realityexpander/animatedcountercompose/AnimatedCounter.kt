@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -40,11 +39,11 @@ fun AnimatedCounter(
 
         // For each individual `char` in `countString`...
         for(i in countString.indices) {
+            val currentChar = countString[i]
             val oldChar = oldCountString.getOrNull(i)
-            val newChar = countString[i]
 
-            // Only animate if any `char` is different
-            val char = if(oldChar == newChar) {
+            // We want animate only if any `char` is different
+            val char = if(oldChar == currentChar) {
                     oldCountString[i]
                 } else {
                     countString[i]
@@ -53,7 +52,7 @@ fun AnimatedCounter(
             AnimatedContent(
                 targetState = char, // Only animate if `char` changes. This will also trigger a recomposition.
                 transitionSpec = {
-                    slideInVertically { it } with slideOutVertically { -it }
+                    slideInVertically { it } with fadeOut() + slideOutVertically { -it }
                 }
             ) { char ->
                 Text(
