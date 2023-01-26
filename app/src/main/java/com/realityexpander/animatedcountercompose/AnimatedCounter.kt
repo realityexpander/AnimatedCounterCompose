@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalAnimationApi::class)
 
-package com.plcoding.animatedcountercompose
+package com.realityexpander.animatedcountercompose
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.layout.Arrangement
