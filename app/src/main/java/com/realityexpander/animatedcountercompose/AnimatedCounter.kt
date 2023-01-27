@@ -123,7 +123,7 @@ fun AnimatedTextFlipper(
             Box {
 
 
-                // Cloudy (text blur) only works WITHOUT AnimatedContent
+                // Shadow - Cloudy (text blur) only works WITHOUT AnimatedContent
 //                Cloudy(radius = 12, key1 = char) {
 //                    Text(
 //                        text = char.toString(),
@@ -140,10 +140,10 @@ fun AnimatedTextFlipper(
 //                )
 
                 AnimatedContent(
-                    targetState = char, // Only animate if `char` changes. This will also trigger a recomposition.
+                    targetState = char, // Only animates/recompose if `char` changes. This will also trigger a recomposition.
                     transitionSpec = {
                         fadeIn(tween(400)) with fadeOut(tween(400))
-//                        slideInVertically(
+//                        slideInVertically(  // more complex-looking animated transition
 //                            tween(300)
 //                        ) { it } with
 //                                slideOutVertically(
@@ -169,7 +169,7 @@ fun AnimatedTextFlipper(
                     // Dropshadow using classic views
                     // https://medium.com/tech-takeaways/jetpack-compose-drop-shadow-text-effect-b2f95d0dc2b5
 
-                    // Only works in Android 12
+                    // Shadow - Only works in Android 12
 //                Text(
 //                    modifier = modifier
 //                        .alpha(alpha = 0.95f)
