@@ -44,6 +44,7 @@ class MainActivity : ComponentActivity() {
                     var text by remember {
                         mutableStateOf(get10CharAlphanumericString())
                     }
+
                     var lockedIndexes by remember {
                         mutableStateOf(arrayOf(false, false, false, false, false, false, false, false, false, false))
                     }
