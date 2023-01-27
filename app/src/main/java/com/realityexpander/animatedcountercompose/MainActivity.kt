@@ -56,7 +56,7 @@ class MainActivity : ComponentActivity() {
                         while(true) {
                             text = text.replaceCharsAtUnlockedIndexes(lockedIndexes)
 
-                            delay(250)
+                            delay(450)
                         }
                     }
                     LaunchedEffect(key1 = true) {
