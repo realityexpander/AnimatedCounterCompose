@@ -233,6 +233,15 @@ fun get10CharAlphanumericString(): String  {
     }
 }
 
+fun asciiToChar(): String {
+//    return "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#\$%&'()*+,-./:;?@[\\]{|}".map {
+    return "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".map {
+        it.toInt()
+    }.joinToString("") {
+        it.toChar().toString()
+    }
+}
+
 fun String.replaceCharsAtUnlockedIndexes(lockedIndexes: Array<Boolean>): String {
     if(this.isBlank()) return ""
 
@@ -240,11 +249,15 @@ fun String.replaceCharsAtUnlockedIndexes(lockedIndexes: Array<Boolean>): String 
 
     this.forEachIndexed { index, char ->
         if(!lockedIndexes[index]) {
-            result += Char(Random.nextInt(65, 65+26))
+//            result += Char(Random.nextInt(33, 126))
+            result += asciiToChar()[Random.nextInt(0, asciiToChar().length)]
         } else {
             result += char
         }
     }
 
     return result
+}
+fun main() {
+    println(asciiToChar())
 }
