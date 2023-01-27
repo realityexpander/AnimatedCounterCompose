@@ -1,30 +1,31 @@
 package com.realityexpander.animatedcountercompose
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.Button
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.realityexpander.animatedcountercompose.ui.theme.AnimatedCounterComposeTheme
 import kotlinx.coroutines.delay
 import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -34,28 +35,27 @@ class MainActivity : ComponentActivity() {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    // For manual counter
                     var count by remember {
                         mutableStateOf(0)
                     }
 
+                    // For WarGames
                     var text by remember {
                         mutableStateOf(get10CharAlphanumericString())
                     }
                     var lockedIndexes by remember {
                         mutableStateOf(arrayOf(false, false, false, false, false, false, false, false, false, false))
                     }
-
-                    // increment count every second
                     LaunchedEffect(key1 = true) {
                         delay(200)
 
                         while(true) {
                             text = text.replaceCharsAtUnlockedIndexes(lockedIndexes)
 
-                            delay(200)
+                            delay(500)
                         }
                     }
-
                     LaunchedEffect(key1 = true) {
                         delay(1000)
 
@@ -82,7 +82,9 @@ class MainActivity : ComponentActivity() {
                             Text(text = "Increment")
                         }
 
-                        Divider(modifier = Modifier.height(20.dp))
+                        Spacer(modifier = Modifier.height(30.dp))
+                        Divider(modifier = Modifier.height(4.dp))
+                        Spacer(modifier = Modifier.height(30.dp))
 
                         AnimatedTextFlipper(
                             text = text,

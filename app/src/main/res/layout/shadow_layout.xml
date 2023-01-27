@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="DropShadow Test Text"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="4"
+            android:shadowRadius="0.5"
+            android:textSize="30sp" />
+
+</FrameLayout>
