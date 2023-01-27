@@ -236,7 +236,7 @@ fun get10CharAlphanumericString(): String  {
 fun asciiToChar(): String {
 //    return "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#\$%&'()*+,-./:;?@[\\]{|}".map {
     return "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".map {
-        it.toInt()
+        it.code
     }.joinToString("") {
         it.toChar().toString()
     }
