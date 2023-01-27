@@ -20,6 +20,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.realityexpander.animatedcountercompose.ui.AnimatedTextFlipper
+import com.realityexpander.animatedcountercompose.ui.get10CharAlphanumericString
+import com.realityexpander.animatedcountercompose.ui.replaceCharsAtUnlockedIndexes
 import com.realityexpander.animatedcountercompose.ui.theme.AnimatedCounterComposeTheme
 import kotlinx.coroutines.delay
 import kotlin.random.Random
@@ -40,13 +43,12 @@ class MainActivity : ComponentActivity() {
                         mutableStateOf(0)
                     }
 
-                    // For WarGames
+                    // Driver For WarGames
                     var text by remember {
                         mutableStateOf(get10CharAlphanumericString())
                     }
-
                     var lockedIndexes by remember {
-                        mutableStateOf(arrayOf(false, false, false, false, false, false, false, false, false, false))
+                        mutableStateOf(Array<Boolean>(10) { false })
                     }
                     LaunchedEffect(key1 = true) {
                         delay(200)
@@ -79,7 +81,10 @@ class MainActivity : ComponentActivity() {
                             count = count,
                             style = MaterialTheme.typography.h1
                         )
-                        Button(onClick = { count++ }) {
+                        Button(onClick = {
+                            count++
+                            lockedIndexes = Array<Boolean>(10) { false }
+                        }) {
                             Text(text = "Increment")
                         }
 
