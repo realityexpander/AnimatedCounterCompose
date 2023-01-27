@@ -159,11 +159,13 @@ fun AnimatedTextFlipper(
                 AnimatedContent(
                     targetState = char, // Only animate if `char` changes. This will also trigger a recomposition.
                     transitionSpec = {
-                        slideInVertically(
-                            tween(100)
-                        ) { it } with slideOutVertically(
-                            tween(100)
-                        ) { -it }
+                        fadeIn(tween(400)) with fadeOut(tween(400))
+//                        slideInVertically(
+//                            tween(300)
+//                        ) { it } with
+//                                slideOutVertically(
+//                                    tween(300)
+//                                ) { -it }
                     }
                 ) { char ->
 
@@ -214,7 +216,7 @@ fun AnimatedTextFlipper(
 //                            setTextColor(floatsToAndroidColor(0f, 0f, 0f, 1.0f)) // to show only shadow
                             setTextColor(floatsToAndroidColor(.50f, .50f, .99f, 1.0f))
 //                            setShadowLayer(3.5f, 0f, 0f, context.getColor(R.color.white)) // uses resource for color.
-                            setShadowLayer(6.5f, 0f, 0f, floatsToAndroidColor(0.7f, 0.7f, 1.0f, 1.0f))
+                            setShadowLayer(15.5f, 0f, 0f, floatsToAndroidColor(0.6f, 0.6f, 1.0f, 1.0f))
                         }
                     },
                     update = {
@@ -256,6 +258,7 @@ fun PreviewAnimatedCounter() {
 }
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview(showBackground = true, device = "id:Nexus One", backgroundColor = 0xFF1F1B1B,
     uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL
 )
